@@ -14,6 +14,11 @@ class ProductData:
 
     def set_pivot_dataframe_data_types(self):
         self.df_customer_ids = self.df_init_recommender["Customer_ID"].astype("string").to_frame()
+        self.dict_customers = {}
+        for i, id in enumerate(self.df_customer_ids.values):
+            customer_id = id[0]
+            self.dict_customers[i] = customer_id
+        self.dict_customers_rvs = dict([(value, key) for key, value in self.dict_customers.items()])
         self.df_products = self.df_init_recommender.drop(["Customer_ID"], axis=1)
         self.df_products = self.df_products.fillna(0).astype('Int64')
         self.df_recommender = self.df_products.copy()
