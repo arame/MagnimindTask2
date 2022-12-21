@@ -9,3 +9,4 @@ def save_file(file_name, df):
         
     filepath = Path(output_path)
     df.to_csv(filepath)
+    print(f"Output saved to file {filepath}")
